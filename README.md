@@ -6,8 +6,8 @@ Following the Cisco Design Gudies as closely as possible.  There are some things
 
 ## Cisco Design Guides
  
- * A [Intelligent WAN Technology Design Guide](http://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/Feb2016/CVD-IWANDesignGuide-FEB16.pdf).
- * A [Intelligent WAN Configuration Files Guide](http://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/Feb2016/CVD-IWANConfigurationFilesGuide-FEB16.pdf).
+ * [Intelligent WAN Technology Design Guide](http://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/Feb2016/CVD-IWANDesignGuide-FEB16.pdf).
+ * [Intelligent WAN Configuration Files Guide](http://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/Feb2016/CVD-IWANConfigurationFilesGuide-FEB16.pdf).
 
 ## Notes:
 
