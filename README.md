@@ -12,7 +12,7 @@ Following the Cisco Design Gudies as closely as possible.  There are some things
 ## Notes:
 
 * To generate specific types of traffic use the linux 'server' images at each remote site.  
-	e.g. ping -Q <TOS> <host>
+	e.g. `ping -Q <TOS> <host>`
 
 
 | TOS (decimal) | DSCP Class    |
