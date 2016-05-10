@@ -2,7 +2,7 @@
 
 A VIRL iWAN topology to be used for studying, learning, etc....
 
-Following the Cisco Design Gudies as closely as possible.  There are some things I've intentionally ommitted to focus on the iWAN technology.  For example there is no IPSec encryption configured, no EIGRP authentication and a few other things.  I'm not against putting them into the VIRL topology for completeness, but they are not on the top of my list as they are not core to learning the iWAN concepts.
+Following the Cisco Design Gudies as closely as possible.  There are some things I've intentionally ommitted to focus on the iWAN technology.  For example there is no IPSec encryption configured and a few other things.  I'm not against putting them into the VIRL topology for completeness, but they are not on the top of my list as they are not core to learning the iWAN concepts.
 
 ## Cisco Design Guides
  
