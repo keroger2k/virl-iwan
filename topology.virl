@@ -6,7 +6,7 @@
     <node name="MC-HY-CSR1000V-1" type="SIMPLE" subtype="CSR1000v" location="281,440">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:50:28 UTC Mon May 9 2016
+! Last configuration change at 13:59:11 UTC Tue May 10 2016
 !
 version 15.6
 service config
@@ -94,6 +94,10 @@ domain iwan
 !
 !
 !
+!
+key chain LAN-KEY
+ key 1
+   key-string 7 0508571C22431F5B4A
 !
 crypto pki trustpoint TP-self-signed-2209255044
  enrollment selfsigned
@@ -194,6 +198,8 @@ router eigrp IWAN-EIGRP
   exit-af-interface
   !
   af-interface GigabitEthernet2
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -459,7 +465,7 @@ call-home
     <node name="VPN-INET-4451X-2" type="SIMPLE" subtype="IOSv" location="285,356">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:30:58 UTC Mon May 9 2016
+! Last configuration change at 07:57:59 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -512,6 +518,13 @@ domain iwan
    master 10.6.32.251
    password 7 070C705F4D06485744
 !
+!
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
 !
 !
 !
@@ -693,6 +706,8 @@ router eigrp IWAN-EIGRP
   exit-af-interface
   !
   af-interface GigabitEthernet0/1
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -701,6 +716,8 @@ router eigrp IWAN-EIGRP
    summary-address 10.7.0.0 255.255.0.0
    summary-address 10.8.0.0 255.255.0.0
    summary-address 10.255.240.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -810,7 +827,7 @@ end</entry>
     <node name="VPN-MPLS-ASR1002X-1" type="SIMPLE" subtype="IOSv" location="272,244">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:32:43 UTC Mon May 9 2016
+! Last configuration change at 08:20:31 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -864,6 +881,13 @@ domain iwan
    master 10.6.32.251
    password 7 06055E324F41584B56
 !
+!
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
 !
 !
 !
@@ -1043,6 +1067,8 @@ router eigrp IWAN-EIGRP
    summary-address 10.7.0.0 255.255.0.0
    summary-address 10.8.0.0 255.255.0.0
    summary-address 10.255.240.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -1050,6 +1076,8 @@ router eigrp IWAN-EIGRP
   exit-af-interface
   !
   af-interface GigabitEthernet0/1
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -1140,7 +1168,7 @@ end</entry>
     <node name="INET1" type="SIMPLE" subtype="IOSv" location="597,153">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:38:38 UTC Mon May 9 2016
+! Last configuration change at 10:10:28 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1289,7 +1317,7 @@ end</entry>
     <node name="MPLS-PE-01" type="SIMPLE" subtype="IOSv" location="548,397">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:44:06 UTC Mon May 9 2016
+! Last configuration change at 12:29:56 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1462,7 +1490,7 @@ end</entry>
     <node name="MPLS-P-01" type="SIMPLE" subtype="IOSv" location="600,313">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:43:34 UTC Mon May 9 2016
+! Last configuration change at 12:23:07 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1610,7 +1638,7 @@ end</entry>
     <node name="MPLS-PE-02" type="SIMPLE" subtype="IOSv" location="654,397">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:37:35 UTC Mon May 9 2016
+! Last configuration change at 09:45:17 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1801,7 +1829,7 @@ end</entry>
     <node name="RS11-2921" type="SIMPLE" subtype="IOSv" location="822,92">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:30:32 UTC Mon May 9 2016
+! Last configuration change at 08:15:41 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -1863,6 +1891,10 @@ domain iwan
    password c1sco123
    hub 10.6.32.251
 !
+!
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
 !
 !
 !
@@ -2067,6 +2099,8 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel10
    summary-address 10.7.0.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -2074,6 +2108,8 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel11
    summary-address 10.7.0.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -2168,7 +2204,7 @@ end</entry>
     <node name="RS12-2911-2" type="SIMPLE" subtype="IOSv" location="816,301">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:38:56 UTC Mon May 9 2016
+! Last configuration change at 10:36:04 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2221,6 +2257,13 @@ domain iwan
    master 10.255.241.12
    password 7 08221D5D0A16544541
 !
+!
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
 !
 !
 !
@@ -2375,12 +2418,16 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel11
    summary-address 10.7.16.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
   exit-af-interface
   !
   af-interface GigabitEthernet0/2.99
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -2467,7 +2514,7 @@ end</entry>
     <node name="RS12-2911-1" type="SIMPLE" subtype="IOSv" location="816,228">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:36:36 UTC Mon May 9 2016
+! Last configuration change at 09:41:18 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2524,6 +2571,13 @@ domain iwan
    password c1sco123
    hub 10.6.32.251
 !
+!
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
 !
 !
 !
@@ -2637,12 +2691,16 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel10
    summary-address 10.7.16.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
   exit-af-interface
   !
   af-interface GigabitEthernet0/2.99
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -2716,7 +2774,7 @@ end</entry>
     <node name="RS41-2921" type="SIMPLE" subtype="IOSv" location="822,397">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:34:40 UTC Mon May 9 2016
+! Last configuration change at 10:13:27 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2777,6 +2835,10 @@ domain iwan
    password c1sco123
    hub 10.6.32.251
 !
+!
+key chain WAN-KEY
+ key 1
+  key-string 7 070C705F4D06485744
 !
 !
 !
@@ -2904,6 +2966,8 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel10
    summary-address 10.7.192.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -2911,6 +2975,8 @@ router eigrp IWAN-EIGRP
   !
   af-interface Tunnel11
    summary-address 10.7.0.0 255.255.248.0
+   authentication mode md5
+   authentication key-chain WAN-KEY
    hello-interval 20
    hold-time 60
    no passive-interface
@@ -3005,7 +3071,7 @@ end</entry>
     <node name="RS11-A2960" type="SIMPLE" subtype="IOSvL2" location="953,98">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:44:28 UTC Mon May 9 2016
+! Last configuration change at 12:46:11 UTC Tue May 10 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -3140,7 +3206,7 @@ end</entry>
     <node name="RS12-A2960" type="SIMPLE" subtype="IOSvL2" location="953,245">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:40:52 UTC Mon May 9 2016
+! Last configuration change at 12:00:58 UTC Tue May 10 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -3296,7 +3362,7 @@ end</entry>
     <node name="RS41-D3750" type="SIMPLE" subtype="IOSvL2" location="953,403">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:44:54 UTC Mon May 9 2016
+! Last configuration change at 12:57:22 UTC Tue May 10 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -3417,7 +3483,7 @@ end</entry>
     <node name="IW-DMZ-A2960X" type="SIMPLE" subtype="IOSvL2" location="434,203">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:32:31 UTC Mon May 9 2016
+! Last configuration change at 07:51:45 UTC Tue May 10 2016
 !
 version 15.2
 service timestamps debug datetime msec
@@ -3532,7 +3598,7 @@ end</entry>
     <node name="IE-D3750X" type="SIMPLE" subtype="IOSv" location="104,40">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:46:29 UTC Mon May 9 2016
+! Last configuration change at 13:27:11 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -3574,6 +3640,10 @@ no ipv6 cef
 multilink bundle-name authenticated
 !
 !
+!
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
 !
 !
 !
@@ -3625,6 +3695,8 @@ router eigrp IWAN-EIGRP
   exit-af-interface
   !
   af-interface GigabitEthernet0/2
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
@@ -3690,7 +3762,7 @@ end</entry>
     <node name="WAN-D3750X" type="SIMPLE" subtype="IOSv" location="91,440">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:46:59 UTC Mon May 9 2016
+! Last configuration change at 13:23:32 UTC Tue May 10 2016
 !
 version 15.6
 service timestamps debug datetime msec
@@ -3732,6 +3804,10 @@ no ipv6 cef
 multilink bundle-name authenticated
 !
 !
+!
+key chain LAN-KEY
+ key 1
+  key-string 7 0508571C22431F5B4A
 !
 !
 !
@@ -3795,18 +3871,26 @@ router eigrp IWAN-EIGRP
   exit-af-interface
   !
   af-interface GigabitEthernet0/2
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
   af-interface GigabitEthernet0/3
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
   af-interface GigabitEthernet0/4
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
   af-interface GigabitEthernet0/1
+   authentication mode md5
+   authentication key-chain LAN-KEY
    no passive-interface
   exit-af-interface
   !
